@@ -74,7 +74,7 @@
           <span class="stepper-arrow down" @click="counterMinus"></span>
         </div>
       </div>
-      <span class="btn btn_cart" data-url="/cart/" data-product-id="9bf0afd7-5190-11e5-b9a9-00259036a192">
+      <span class="btn btn_cart" data-url="/cart/" :data-product-id="productData.productId">
         <svg class="ic ic_cart">
           <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#cart"></use>
         </svg>
@@ -91,11 +91,17 @@ function splitByIndex (value, size, index) {
 export default {
 
   data () {
+    const type = this.productData.unitFull
+    if (type === 'упаковка') {
+      this.productData.unitFull = 'упаковку'
+    } else if (type === 'штука') {
+      this.productData.unitFull = 'штуку'
+    }
     return {
       activeClass: 'container',
       buttons: [
-        ['за м.кв', 'container'],
-        ['за упаковку', 'container-fluid']
+        [`за ${this.productData.unitAlt}`, 'container'],
+        [`за ${this.productData.unitFull}`, 'container-fluid']
       ],
       counter: 1
     }
@@ -120,12 +126,22 @@ export default {
       return productsArr
     },
     roundGold () {
-      const round = this.productData.priceGoldAlt.toFixed(2)
-      return round
+      if (this.activeClass === 'container') {
+        const round = (this.productData.priceGoldAlt * this.counter).toFixed(2)
+        return round
+      } else {
+        const round = (this.productData.priceGold * this.counter).toFixed(2)
+        return round
+      }
     },
     roundRetail () {
-      const round = this.productData.priceRetailAlt.toFixed(2)
-      return round
+      if (this.activeClass === 'container') {
+        const round = (this.productData.priceRetailAlt * this.counter).toFixed(2)
+        return round
+      } else {
+        const round = (this.productData.priceRetail * this.counter).toFixed(2)
+        return round
+      }
     }
   },
   methods: {
