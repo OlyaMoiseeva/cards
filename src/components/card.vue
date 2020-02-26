@@ -26,11 +26,31 @@
     <div class="product_units">
       <div class="unit--wrapper">
         <div class="unit--select"
-          v-for="[label, className] in buttons"
-          :key="className"
-          v-bind:class="{ active: className === activeClass }"
-          v-on:click="setActiveClass(className)">
-          <p class="ng-binding">{{ label }}</p>
+        v-bind:class="{ active: isActive }"
+        v-on:click="setActiveClass"
+        >
+          <p class="ng-binding">за {{ productData.unitAlt }}</p>
+        </div>
+        <div class="unit--select"
+          v-if="productData.unitFull === 'упаковка'"
+          v-bind:class="{ active: !isActive }"
+          v-on:click="setActiveClass"
+        >
+          <p class="ng-binding">за упаковку</p>
+        </div>
+        <div class="unit--select"
+          v-else-if="productData.unitFull === 'штука'"
+          v-bind:class="{ active: !isActive }"
+          v-on:click="setActiveClass"
+        >
+          <p class="ng-binding">за штуку</p>
+        </div>
+        <div class="unit--select"
+          v-else
+          v-bind:class="{ active: !isActive }"
+          v-on:click="setActiveClass"
+        >
+          <p class="ng-binding">за {{productData.unitFull}}</p>
         </div>
       </div>
     </div>
@@ -58,10 +78,22 @@
     <div class="list--unit-desc">
       <div class="unit--info">
       <div class="unit--desc-i"></div>
-        <div class="unit--desc-t">
+        <div class="unit--desc-t" v-if="productData.unit === 'упак.'">
           <p>
             <span class="ng-binding">Продается упаковками:</span>
-            <span class="unit--infoInn">1 упак. = 2.47 м. кв. </span>
+            <span class="unit--infoInn">1 {{productData.unit}} = 2.47 м. кв.</span>
+          </p>
+        </div>
+        <div class="unit--desc-t" v-else-if="productData.unit === 'шт.'">
+          <p>
+            <span class="ng-binding">Продается поштучно:</span>
+            <span class="unit--infoInn">1 {{productData.unit}} = 2.47 м. кв.</span>
+          </p>
+        </div>
+        <div class="unit--desc-t" v-else-if="productData.unit === 'м/п'">
+          <p>
+            <span class="ng-binding">Продается по метражу:</span>
+            <span class="unit--infoInn">1 {{productData.unit}} = 2.47 м. кв.</span>
           </p>
         </div>
       </div>
@@ -91,18 +123,8 @@ function splitByIndex (value, size, index) {
 export default {
 
   data () {
-    const type = this.productData.unitFull
-    if (type === 'упаковка') {
-      this.productData.unitFull = 'упаковку'
-    } else if (type === 'штука') {
-      this.productData.unitFull = 'штуку'
-    }
     return {
-      activeClass: 'container',
-      buttons: [
-        [`за ${this.productData.unitAlt}`, 'container'],
-        [`за ${this.productData.unitFull}`, 'container-fluid']
-      ],
+      isActive: true,
       counter: 1
     }
   },
@@ -126,7 +148,7 @@ export default {
       return productsArr
     },
     roundGold () {
-      if (this.activeClass === 'container') {
+      if (this.isActive === true) {
         const round = (this.productData.priceGoldAlt * this.counter).toFixed(2)
         return round
       } else {
@@ -135,7 +157,7 @@ export default {
       }
     },
     roundRetail () {
-      if (this.activeClass === 'container') {
+      if (this.isActive === true) {
         const round = (this.productData.priceRetailAlt * this.counter).toFixed(2)
         return round
       } else {
@@ -146,7 +168,7 @@ export default {
   },
   methods: {
     setActiveClass: function (className) {
-      this.activeClass = className
+      this.isActive = !this.isActive
     },
     counterPlus () {
       this.counter++
