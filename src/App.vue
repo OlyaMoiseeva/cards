@@ -67,30 +67,53 @@ export default {
   .sub_category_page .column_right {
     float: none;
     margin: 0 auto;
-    width: 100%
   }
   @media (max-width: 999px) {
     .container {
       max-width: 700px;
       margin: 0 auto;
+      .sub_category_page .column_right {
+        width: 100%
+      }
       .products_page {
         display: flex;
         flex-wrap: wrap;
-        justify-content: space-between;
+        justify-content: space-around;
+      }
+      .product_horizontal {
+        margin: 10px 15px 18px;
+        .product_photo {
+          margin: 10px auto;
+          float: none;
+        }
       }
     }
   }
   @media (max-width: 700px) {
-  .container {
-    max-width: 550px;
+    .container {
+      max-width: 550px;
+    }
   }
   @media (max-width: 550px) {
     .container {
       max-width: 310px;
-    }
-    .n_card {
-      margin: 0 auto;
+      .n_card {
+        margin: 0 auto;
+        .product_horizontal {
+          width: 270px;
+        }
+        .product_count_wrapper {
+          right: 185px;
+        }
+        .btn_cart,
+        .product_price_club_card,
+        .product_price_default {
+          right: 15px
+        }
+        .product_price_club_card_text {
+          margin-right: 5px;
+        }
+      }
     }
   }
-}
 </style>

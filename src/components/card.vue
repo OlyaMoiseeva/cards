@@ -43,7 +43,7 @@
           v-bind:class="{ active: !isActive }"
           v-on:click="setActiveClass"
         >
-          <p class="ng-binding">за штуку</p>
+          <p class="ng-binding">за штуку</p><!-- optional -->
         </div>
         <div class="unit--select"
           v-else
@@ -56,7 +56,7 @@
     </div>
     <p class="product_price_club_card">
       <span class="product_price_club_card_text">По карте<br>клуба</span>
-      <span class="goldPrice">{{ roundGold }}</span>
+      <span class="goldPrice">{{ prcGold }}</span>
       <span class="rouble__i black__i">
         <svg version="1.0" id="rouble__b" xmlns="http://www.w3.org/2000/svg" x="0" y="0" width="30px" height="22px" viewBox="0 0 50 50" enable-background="new 0 0 50 50" xml:space="preserve">
           <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#rouble_black"></use>
@@ -64,7 +64,7 @@
       </span>
     </p>
     <p class="product_price_default">
-      <span class="retailPrice">{{ roundRetail }}</span>
+      <span class="retailPrice">{{ prcRetail }}</span>
       <span class="rouble__i black__i">
         <svg version="1.0" id="rouble__g" xmlns="http://www.w3.org/2000/svg" x="0" y="0" width="30px" height="22px" viewBox="0 0 50 50" enable-background="new 0 0 50 50" xml:space="preserve">
           <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#rouble_gray"></use>
@@ -147,7 +147,7 @@ export default {
       }
       return productsArr
     },
-    roundGold () {
+    prcGold () {
       if (this.isActive === true) {
         const round = (this.productData.priceGoldAlt * this.counter).toFixed(2)
         return round
@@ -156,7 +156,7 @@ export default {
         return round
       }
     },
-    roundRetail () {
+    prcRetail () {
       if (this.isActive === true) {
         const round = (this.productData.priceRetailAlt * this.counter).toFixed(2)
         return round
@@ -167,7 +167,7 @@ export default {
     }
   },
   methods: {
-    setActiveClass: function (className) {
+    setActiveClass (className) {
       this.isActive = !this.isActive
     },
     counterPlus () {

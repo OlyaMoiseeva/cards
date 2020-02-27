@@ -951,7 +951,7 @@ textarea {
     .stepper .stepper-input::-webkit-outer-spin-button { -webkit-appearance: none; margin: 0; }
 
     .stepper .stepper-input:focus { background-color: #fff; }
-    .stepper .stepper-arrow { background: #fff url(images/templates/jquery.fs.stepper-arrows.png) no-repeat; border: 1px solid #ccc; cursor: pointer; display: block; height: 50%; position: absolute; right: 0; text-indent: -99999px; width: 25px; z-index: 50; }
+    .stepper .stepper-arrow { background: #fff url(../../images/templates/jquery.fs.stepper-arrows.png) no-repeat; border: 1px solid #ccc; cursor: pointer; display: block; height: 50%; position: absolute; right: 0; text-indent: -99999px; width: 25px; z-index: 50; }
     .stepper .stepper-arrow.up { background-position: center top; border-bottom: none; border-top: none; border-right: none; top: 0; }
     .stepper .stepper-arrow.down { background-position: center bottom; border-bottom: none; border-right: none; bottom: 0; }
 
@@ -1022,7 +1022,7 @@ textarea {
 
 .bx-wrapper .bx-loading {
     min-height: 50px;
-    background: url(images/bx_loader.gif) center center no-repeat #fff;
+    background: url(../../images/bx_loader.gif) center center no-repeat #fff;
     height: 100%;
     width: 100%;
     position: absolute;
@@ -1073,12 +1073,12 @@ textarea {
 
 .bx-wrapper .bx-prev {
     left: 10px;
-    background: url(images/controls.png) no-repeat 0 -32px;
+    background: url(../images/controls.png) no-repeat 0 -32px;
 }
 
 .bx-wrapper .bx-next {
     right: 10px;
-    background: url(images/controls.png) no-repeat -43px -32px;
+    background: url(../images/controls.png) no-repeat -43px -32px;
 }
 
 .bx-wrapper .bx-prev:hover {
@@ -1116,7 +1116,7 @@ textarea {
     width: 10px;
     height: 11px;
     outline: 0;
-    background: url(images/controls.png) -86px -11px no-repeat;
+    background: url(../images/controls.png) -86px -11px no-repeat;
     margin: 0 3px;
 }
 
@@ -1131,7 +1131,7 @@ textarea {
     width: 9px;
     height: 11px;
     outline: 0;
-    background: url(images/controls.png) -86px -44px no-repeat;
+    background: url(../images/controls.png) -86px -44px no-repeat;
     margin: 0 3px;
 }
 
@@ -2557,7 +2557,7 @@ body.stop-scrolling {
 }
 
 .fotorama__arr,.fotorama__fullscreen-icon,.fotorama__video-close,.fotorama__video-play {
-    background: url('images/icons/fotorama__i.png') no-repeat
+    background: url('../images/icons/fotorama__i.png') no-repeat
 }
 
 @media (-webkit-min-device-pixel-ratio:1.5),(min-resolution: 2dppx) {
