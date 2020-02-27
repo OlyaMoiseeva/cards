@@ -198,7 +198,8 @@ export default {
   .active {
     background: #000;
     p {
-      color: #fff !important;
+      color: #fff;
+      border-bottom: none;
     }
   }
 </style>
